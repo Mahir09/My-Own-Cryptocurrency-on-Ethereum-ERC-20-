@@ -1,0 +1,17 @@
+{
+    "name": "my_own_etherum_token_erc20",
+    "version": "1.0.0",
+    "description": "My Own Cryptocurrency on Ethereum (ERC-20)",
+    "main": "truffle.js",
+    "directories": {
+      "test": "test"
+    },
+    "scripts": {
+      "dev": "lite-server"
+    },
+    "author": "Mahir Shekh",
+    "license": "ISC",
+    "devDependencies": {
+      "lite-server": "^2.6.1"
+    }
+  }
