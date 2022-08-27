@@ -1,16 +1,16 @@
-var DappToken = artifacts.require("DappToken");
+var MmsToken = artifacts.require("MmsToken");
 
-contract("DappToken", function (accounts) {
+contract("MmsToken", function (accounts) {
   var tokenInstance;
 
   it("initializes the contract with the correct values", function () {
-    return DappToken.deployed()
+    return MmsToken.deployed()
       .then(function (instance) {
         tokenInstance = instance;
         return tokenInstance.name();
       })
       .then(function (name) {
-        assert.equal(name, "Mahir's DAPP Token", "has the correct name");
+        assert.equal(name, "Mahir's Token", "has the correct name");
         return tokenInstance.symbol();
       })
       .then(function (symbol) {
@@ -23,7 +23,7 @@ contract("DappToken", function (accounts) {
   });
 
   it("allocates the initial supply upon deployment", function () {
-    return DappToken.deployed()
+    return MmsToken.deployed()
       .then(function (instance) {
         tokenInstance = instance;
         return tokenInstance.totalSupply();
@@ -46,7 +46,7 @@ contract("DappToken", function (accounts) {
   });
 
   it("transfers token ownership", function () {
-    return DappToken.deployed()
+    return MmsToken.deployed()
       .then(function (instance) {
         tokenInstance = instance;
         // Test `require` statement first by transferring something larger than the sender's balance
@@ -113,7 +113,7 @@ contract("DappToken", function (accounts) {
   });
 
   it('approves tokens for delegated transfer', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MmsToken.deployed().then(function(instance) {
       tokenInstance = instance;
       return tokenInstance.approve.call(accounts[1], 100);
     }).then(function(success) {
@@ -132,7 +132,7 @@ contract("DappToken", function (accounts) {
   });
 
   it('handles delegated token transfers', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MmsToken.deployed().then(function(instance) {
       tokenInstance = instance;
       fromAccount = accounts[2];
       toAccount = accounts[3];

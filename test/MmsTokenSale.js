@@ -1,7 +1,7 @@
-var DappToken = artifacts.require("DappToken");
-var DappTokenSale = artifacts.require("DappTokenSale");
+var MmsToken = artifacts.require("MmsToken");
+var MmsTokenSale = artifacts.require("MmsTokenSale");
 
-contract('DappTokenSale', function(accounts) {
+contract('MmsTokenSale', function(accounts) {
   var tokenInstance;
   var tokenSaleInstance;
   var admin = accounts[0];
@@ -11,7 +11,7 @@ contract('DappTokenSale', function(accounts) {
   var numberOfTokens;
 
   it('initializes the contract with the correct values', function() {
-    return DappTokenSale.deployed().then(function(instance) {
+    return MmsTokenSale.deployed().then(function(instance) {
       tokenSaleInstance = instance;
       return tokenSaleInstance.address
     }).then(function(address) {
@@ -26,10 +26,10 @@ contract('DappTokenSale', function(accounts) {
   });
 
   it('facilitates token buying', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MmsToken.deployed().then(function(instance) {
       // Grab token instance first
       tokenInstance = instance;
-      return DappTokenSale.deployed();
+      return MmsTokenSale.deployed();
     }).then(function(instance) {
       // Then grab token sale instance
       tokenSaleInstance = instance;
@@ -63,10 +63,10 @@ contract('DappTokenSale', function(accounts) {
   });
 
   it('ends token sale', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MmsToken.deployed().then(function(instance) {
       // Grab token instance first
       tokenInstance = instance;
-      return DappTokenSale.deployed();
+      return MmsTokenSale.deployed();
     }).then(function(instance) {
       // Then grab token sale instance
       tokenSaleInstance = instance;
@@ -79,7 +79,7 @@ contract('DappTokenSale', function(accounts) {
     }).then(function(receipt) {
       return tokenInstance.balanceOf(admin);
     }).then(function(balance) {
-      assert.equal(balance.toNumber(), 999990, 'returns all unsold dapp tokens to admin');
+      assert.equal(balance.toNumber(), 999990, 'returns all unsold Mms tokens to admin');
       // Check that the contract has no balance
       balance = web3.eth.getBalance(tokenSaleInstance.address).then(balance =>{
         assert.equal(balance.toNumber(), 0);

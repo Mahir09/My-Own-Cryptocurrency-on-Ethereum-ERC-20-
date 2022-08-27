@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-import "./DappToken.sol";
+import "./MmsToken.sol";
 
-contract DappTokenSale {
+contract MmsTokenSale {
     address payable admin;
-    DappToken public tokenContract;
+    MmsToken public tokenContract;
     uint256 public tokenPrice;
     uint256 public tokensSold;
 
     event Sell(address _buyer, uint256 _amount);
 
-    constructor(DappToken _tokenContract, uint256 _tokenPrice) {
+    constructor(MmsToken _tokenContract, uint256 _tokenPrice) {
         admin = payable(msg.sender);
         tokenContract = _tokenContract;
         tokenPrice = _tokenPrice;
